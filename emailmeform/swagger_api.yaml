@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  description: "SendMeForm API specification"
+  version: "1.0.0"
+  title: "sendmeform API"
+  contact:
+    email: "istinspring@gmail.com"
+  license:
+    name: "GPLv3"
+    url: "https://github.com/istinspring/emailmeform/blob/master/LICENSE"
+tags:
+  - name: "Health check"
+    description: "Service health check endpoint"
+schemes:
+  - "http"
+paths:
+  "/ping":
+    get:
+      tags:
+        - "Health check"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: successful operation. Return json with status
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "string"
+                description: "service status"
+                enum:
+                  - "ok"
+                  - "error"
+              msg:
+                type: "string"
+              datetime:
+                type: "string"
+                format: "date-time"
+        405:
+          description: invalid HTTP Method
